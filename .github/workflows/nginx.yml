@@ -32,6 +32,8 @@ jobs:
           mix local.rebar --force --if-missing
           mix deps.get
           mix dockerfiles .. ${{ matrix.os }}:${{ matrix.nginx-rel }}
+          echot test/Dockerfile.${{ matrix.os }}.${{matrix.nginx-rel }}
+          cat test/Dockerfile.${{ matrix.os }}.${{matrix.nginx-rel }}
       - name: setup buildx
         id: buildx
         uses: docker/setup-buildx-action@master
